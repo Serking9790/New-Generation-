@@ -8,89 +8,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Rubik+Bubble&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-1: #0984e3; /* Blu */
-            --color-2: #2ecc71; /* Verde */
-            --color-3: #f1c40f; /* Giallo */
-            --color-4: #e67e22; /* Arancione */
-            --color-5: #e84393; /* Rosa */
-            --primary: #2d3436;
-            --bg: #ffffff;
-            --accent: #f8f9fa;
+            --color-1: #0984e3; --color-2: #2ecc71; --color-3: #f1c40f; 
+            --color-4: #e67e22; --color-5: #e84393; --primary: #2d3436; --bg: #ffffff;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: var(--bg); color: var(--primary); overflow-x: hidden; }
-
-        /* Navbar */
-        header {
-            background: white;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0; z-index: 1000;
-        }
-
-        /* Logo Stile Immagine */
+        header { background: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
         .logo-block { text-align: left; cursor: pointer; }
         .logo-text { font-family: 'Rubik Bubble', cursive; font-size: 1.6rem; color: #333; line-height: 1; }
         .logo-circles { display: flex; gap: 3px; margin: 4px 0; }
         .circle { width: 8px; height: 8px; border-radius: 50%; }
         .sub-logo { font-size: 0.5rem; text-transform: uppercase; letter-spacing: 1px; color: #666; font-weight: 700; }
-
-        .menu-icon { font-size: 1.5rem; cursor: pointer; color: var(--primary); }
-
-        /* Menu Laterale Overlay */
-        .nav-overlay {
-            position: fixed;
-            top: 0; right: -100%;
-            width: 85%; height: 100%;
-            background: white;
-            z-index: 4000;
-            transition: 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
-            display: flex;
-            flex-direction: column;
-            padding: 60px 30px;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        }
+        .menu-icon { font-size: 1.5rem; cursor: pointer; }
+        .nav-overlay { position: fixed; top: 0; right: -100%; width: 85%; height: 100%; background: white; z-index: 4000; transition: 0.4s ease; display: flex; flex-direction: column; padding: 60px 30px; box-shadow: -5px 0 15px rgba(0,0,0,0.1); }
         .nav-overlay.active { right: 0; }
         .close-nav { position: absolute; top: 20px; right: 25px; font-size: 2rem; cursor: pointer; }
-        .nav-overlay h3 { margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 2px; color: #bbb; text-transform: uppercase; }
         .nav-overlay a { text-decoration: none; color: var(--primary); font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
-        .nav-overlay a i { width: 25px; text-align: center; }
-
-        /* Home Page */
         #main-content { display: block; animation: fadeIn 0.5s; }
-        .hero-banner { background: #fff5f5; padding: 30px 5%; text-align: center; border-bottom: 1px solid #fceaea; }
-        .hero-banner h2 { font-size: 1.2rem; color: var(--color-5); text-transform: uppercase; }
-
-        .section-title { padding: 25px 5% 15px; font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
-
-        /* Griglia Prodotti */
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 5% 40px; }
-        .product-card { background: white; border-radius: 15px; overflow: hidden; border: 1px solid #f1f1f1; box-shadow: 0 3px 6px rgba(0,0,0,0.02); }
-        .product-card img { width: 100%; height: 160px; object-fit: cover; }
-        .product-info { padding: 10px; text-align: center; }
-        .product-info h4 { font-size: 0.85rem; margin-bottom: 5px; color: #444; }
-        .product-price { color: var(--color-1); font-weight: 800; font-size: 1.1rem; }
-
-        /* Pagine Sezione */
-        .section-page {
-            display: none; position: absolute; top: 0; left: 0;
-            width: 100%; min-height: 100vh; background: white;
-            z-index: 2000; padding: 20px 5%; animation: slideIn 0.3s ease-out;
-        }
+        .hero-banner { background: #fff5f5; padding: 25px 5%; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 20px 5%; }
+        .product-card { background: white; border-radius: 15px; overflow: hidden; border: 1px solid #f1f1f1; display: flex; flex-direction: column; }
+        .product-card img { width: 100%; height: 160px; object-fit: cover; background: #f9f9f9; }
+        .product-info { padding: 10px; text-align: center; flex-grow: 1; }
+        .product-info h4 { font-size: 0.8rem; margin-bottom: 5px; }
+        .product-price { color: var(--color-1); font-weight: 800; font-size: 1rem; }
+        .section-page { display: none; position: absolute; top: 0; left: 0; width: 100%; min-height: 100vh; background: white; z-index: 2000; padding: 20px 5%; animation: slideIn 0.3s ease-out; }
         .btn-back { display: inline-block; margin-bottom: 20px; padding: 8px 15px; background: #f0f0f0; border-radius: 50px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
-        .section-header h1 { display: flex; align-items: center; gap: 10px; font-size: 1.6rem; margin-bottom: 20px; }
-
-        .info-box { background: var(--accent); padding: 20px; border-radius: 20px; margin-bottom: 15px; text-align: center; }
-
         @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        .wa-btn { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 28px; z-index: 3000; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .wa-btn { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 28px; z-index: 3000; }
     </style>
 </head>
 <body>
@@ -98,7 +44,7 @@
 <div class="nav-overlay" id="navOverlay">
     <div class="close-nav" onclick="toggleNav()"><i class="fas fa-times"></i></div>
     <h3>Collezioni</h3>
-    <a href="javascript:void(0)" onclick="openSection('new-collection'); toggleNav()"><i class="fas fa-star" style="color: var(--color-3);"></i> ✨ New Collection</a>
+    <a href="javascript:void(0)" onclick="openSection('new-collection'); toggleNav()"><i class="fas fa-star" style="color: var(--color-3);"></i> New Collection</a>
     <a href="javascript:void(0)" onclick="openSection('primavera'); toggleNav()"><i class="fas fa-seedling" style="color: var(--color-2);"></i> Primavera</a>
     <a href="javascript:void(0)" onclick="openSection('estate'); toggleNav()"><i class="fas fa-sun" style="color: var(--color-3);"></i> Estate</a>
     <a href="javascript:void(0)" onclick="openSection('autunno'); toggleNav()"><i class="fas fa-leaf" style="color: var(--color-4);"></i> Autunno</a>
@@ -126,19 +72,50 @@
 
     <div id="home-page">
         <div class="hero-banner">
-            <h2>Novità in Boutique 🎈</h2>
-            <p style="font-size: 0.9rem; color: #777;">Vieni a trovarci in Via Garibaldi 50</p>
+            <h2>Boutique Adrano 🎈</h2>
+            <p>Le migliori marche 0-16 anni</p>
         </div>
-
-        <h2 class="section-title">New Collection ✨</h2>
+        <h2 style="padding: 20px 5% 0;">Vetrina Novità ✨</h2>
         <div class="grid">
             <div class="product-card">
-                <img src="https://via.placeholder.com/300?text=Tuta+Sportiva">
-                <div class="product-info"><h4>Tuta New Generation</h4><p class="product-price">€ 34.90</p></div>
+                <img src="https://via.placeholder.com/300?text=Tuta+Verde+Arancio">
+                <div class="product-info"><h4>Tuta Sport Verde/Arancio</h4><p class="product-price">€ 34.90</p></div>
             </div>
             <div class="product-card">
-                <img src="https://via.placeholder.com/300?text=Mocassino">
-                <div class="product-info"><h4>Mocassino Nero</h4><p class="product-price">€ 25.00</p></div>
+                <img src="https://via.placeholder.com/300?text=Felpa+Fucsia">
+                <div class="product-info"><h4>Completo Felpa Fucsia</h4><p class="product-price">€ 39.00</p></div>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300?text=Giacca+Beige">
+                <div class="product-info"><h4>Giacca K-Way Beige</h4><p class="product-price">€ 45.00</p></div>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300?text=Mocassino+Nero">
+                <div class="product-info"><h4>Mocassino Platform Nero</h4><p class="product-price">€ 25.00</p></div>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300?text=Tuta+Blu+Trussardi">
+                <div class="product-info"><h4>Tuta Trussardi Blu</h4><p class="product-price">€ 49.00</p></div>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300?text=Stivaletto+Fiocco">
+                <div class="product-info"><h4>Stivaletto Beige Fiocco</h4><p class="product-price">€ 29.00</p></div>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300?text=Sneakers+Bianche">
+                <div class="product-info"><h4>Sneakers Fashion</h4><p class="product-price">€ 32.00</p></div>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300?text=Giacca+Blu">
+                <div class="product-info"><h4>Giacca Softshell Blu</h4><p class="product-price">€ 45.00</p></div>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300?text=Completo+Jeans">
+                <div class="product-info"><h4>Set Jeans & T-shirt</h4><p class="product-price">€ 38.00</p></div>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300?text=Abito+Cerimonia">
+                <div class="product-info"><h4>Abito Elegante Bimba</h4><p class="product-price">€ 55.00</p></div>
             </div>
         </div>
     </div>
@@ -146,40 +123,74 @@
 
 <div id="new-collection" class="section-page">
     <div class="btn-back" onclick="goHome()"><i class="fas fa-arrow-left"></i> Home</div>
-    <div class="section-header"><h1>✨ New Collection</h1></div>
-    <div class="grid"></div>
+    <h1>✨ New Collection</h1>
+    <div class="grid">
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Novità+1"><div class="product-info"><h4>Nuovo Arrivo 1</h4><p class="product-price">€ 39.00</p></div></div>
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Novità+2"><div class="product-info"><h4>Nuovo Arrivo 2</h4><p class="product-price">€ 42.00</p></div></div>
+    </div>
 </div>
 
 <div id="primavera" class="section-page">
     <div class="btn-back" onclick="goHome()"><i class="fas fa-arrow-left"></i> Home</div>
-    <div class="section-header"><h1>🌱 Primavera</h1></div>
-    <div class="grid"></div>
+    <h1>🌱 Primavera</h1>
+    <div class="grid">
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Giacca+Leggera"><div class="product-info"><h4>Spolverino Bimbo</h4><p class="product-price">€ 45.00</p></div></div>
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Maglia+Cotone"><div class="product-info"><h4>Maglia Cotone Bio</h4><p class="product-price">€ 18.00</p></div></div>
+    </div>
+</div>
+
+<div id="estate" class="section-page">
+    <div class="btn-back" onclick="goHome()"><i class="fas fa-arrow-left"></i> Home</div>
+    <h1>☀️ Estate</h1>
+    <div class="grid">
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Costume+Mare"><div class="product-info"><h4>Boxer Mare</h4><p class="product-price">€ 15.00</p></div></div>
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Sandali"><div class="product-info"><h4>Sandali Gomma</h4><p class="product-price">€ 12.00</p></div></div>
+    </div>
+</div>
+
+<div id="autunno" class="section-page">
+    <div class="btn-back" onclick="goHome()"><i class="fas fa-arrow-left"></i> Home</div>
+    <h1>🍂 Autunno</h1>
+    <div class="grid">
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Impermeabile"><div class="product-info"><h4>Raincoat Giallo</h4><p class="product-price">€ 35.00</p></div></div>
+    </div>
+</div>
+
+<div id="inverno" class="section-page">
+    <div class="btn-back" onclick="goHome()"><i class="fas fa-arrow-left"></i> Home</div>
+    <h1>❄️ Inverno</h1>
+    <div class="grid">
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Piumino"><div class="product-info"><h4>Piumino Pesante</h4><p class="product-price">€ 69.00</p></div></div>
+    </div>
+</div>
+
+<div id="outlet" class="section-page">
+    <div class="btn-back" onclick="goHome()"><i class="fas fa-arrow-left"></i> Home</div>
+    <h1 style="color: var(--color-5);">🏷️ Outlet %</h1>
+    <div class="grid">
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Scarpe+Sconto"><div class="product-info"><h4>Sneaker Fine Serie</h4><p class="product-price">€ 20.00</p></div></div>
+    </div>
 </div>
 
 <div id="info-page" class="section-page">
     <div class="btn-back" onclick="goHome()"><i class="fas fa-arrow-left"></i> Home</div>
-    <h1>Informazioni</h1>
-    <div class="info-box">
-        <h3>📍 Adrano</h3>
-        <p>Via Garibaldi 50 (CT)</p>
-        <a href="https://www.google.com/maps/search/?api=1&query=Via+Garibaldi+50+Adrano" target="_blank" style="color: var(--color-1); font-weight: bold;">Apri Mappa</a>
-    </div>
-    <div class="info-box">
-        <h3>⏰ Orari</h3>
-        <p>Mar-Sab: 09:00-13:00 / 16:00-20:00</p>
-        <p>Lun: Solo pomeriggio</p>
+    <h1>Info & Orari</h1>
+    <div style="background:#f9f9f9; padding:20px; border-radius:15px; text-align:center;">
+        <p><strong>📍 Indirizzo:</strong> Via Garibaldi 50, Adrano (CT)</p>
+        <p><strong>⏰ Orari:</strong> Mar-Sab 9-13 / 16-20 | Lun 16-20</p>
+        <p><strong>📞 Tel:</strong> 095 2881585</p>
     </div>
 </div>
 
-<a href="https://wa.me/39123456789" class="wa-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="https://wa.me/393270000000" class="wa-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <script>
     function toggleNav() { document.getElementById('navOverlay').classList.toggle('active'); }
     function openSection(pageId) {
         document.getElementById('main-content').style.display = 'none';
         document.querySelectorAll('.section-page').forEach(p => p.style.display = 'none');
-        document.getElementById(pageId).style.display = 'block';
-        window.scrollTo(0,0);
+        let target = document.getElementById(pageId);
+        if(target) { target.style.display = 'block'; window.scrollTo(0,0); }
     }
     function goHome() {
         document.querySelectorAll('.section-page').forEach(p => p.style.display = 'none');
@@ -187,6 +198,5 @@
         window.scrollTo(0,0);
     }
 </script>
-
 </body>
 </html>
