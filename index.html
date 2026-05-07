@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Generation - Abbigliamento Bambini 0-15 anni</title>
+    <!-- Includo le icone per il carrello e WhatsApp -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Stili Generali */
+        :root {
+            --primary-color: #ff9a9e;
+            --secondary-color: #fecfef;
+            --text-color: #333;
+            --bg-color: #fafafa;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        a { text-decoration: none; color: inherit; }
+        
+        /* Header e Navigazione */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .cart-icon {
+            position: relative;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Sezione Hero (Immagine principale) */
+        .hero {
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 { font-size: 40px; margin-bottom: 10px; }
+        .hero p { font-size: 18px; max-width: 600px; margin: 0 auto; }
+
+        /* Galleria Prodotti */
+        .shop-section {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .shop-section h2 { margin-bottom: 30px; color: var(--primary-color); }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            background-color: #eee;
+        }
+        .product-title { font-size: 18px; margin: 15px 0 5px; font-weight: bold; }
+        .product-price { color: var(--primary-color); font-size: 20px; font-weight: bold; margin-bottom: 15px; }
+        .add-to-cart {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .add-to-cart:hover { background-color: #ff7b80; }
+
+        /* Pulsante WhatsApp Fluttuante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            padding: 15px 20px;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .whatsapp-float:hover { background-color: #128c7e; }
+        .whatsapp-text { font-size: 14px; font-weight: bold; }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        /* Responsive per cellulari */
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 15px; }
+            .hero h1 { font-size: 30px; }
+            .whatsapp-text { display: none; } /* Nasconde il testo WA su mobile, lascia solo l'icona */
+            .whatsapp-float { padding: 15px; right: 20px; bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Intestazione -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">New Generation 🧸</div>
+            <div class="cart-icon" onclick="apriCarrello()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cart-counter">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sezione di Benvenuto -->
+    <section class="hero">
+        <h1>Vesti i loro sogni!</h1>
+        <p>Benvenuti da New Generation. Il meglio dell'abbigliamento per bambini e ragazzi da 0 a 15 anni. Stile, comodità e qualità per tutte le età.</p>
+    </section>
+
+    <!-- Galleria Prodotti -->
+    <section class="shop-section">
+        <h2>I Nostri Nuovi Arrivi</h2>
+        <div class="product-grid">
+            <!-- Prodotto 1 -->
+            <div class="product-card">
+                <!-- Sostituisci il link src con la foto vera del prodotto -->
+                <img src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?auto=format&fit=crop&w=400&q=80" alt="Tutina Neonato" class="product-img">
+                <div class="product-title">Tutina Neonato "Orsetto"</div>
+                <div class="product-price">€ 19.99</div>
+                <button class="add-to-cart" onclick="aggiungiAlCarrello()">Aggiungi al Carrello</button>
+            </div>
+            
+            <!-- Prodotto 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=400&q=80" alt="Vestito Bambina" class="product-img">
+                <div class="product-title">Abitino Estivo Fiori (4-8 anni)</div>
+                <div class="product-price">€ 24.50</div>
+                <button class="add-to-cart" onclick="aggiungiAlCarrello()">Aggiungi al Carrello</button>
+            </div>
+
+            <!-- Prodotto 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1471286174890-9c112bdfc9d6?auto=format&fit=crop&w=400&q=80" alt="Completo Ragazzo" class="product-img">
+                <div class="product-title">Completo Sportivo (10-15 anni)</div>
+                <div class="product-price">€ 35.00</div>
+                <button class="add-to-cart" onclick="aggiungiAlCarrello()">Aggiungi al Carrello</button>
+            </div>
+            
+            <!-- Prodotto 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1522771930-78848d9293e8?auto=format&fit=crop&w=400&q=80" alt="Scarpine" class="product-img">
+                <div class="product-title">Scarpine Primi Passi</div>
+                <div class="product-price">€ 22.90</div>
+                <button class="add-to-cart" onclick="aggiungiAlCarrello()">Aggiungi al Carrello</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pulsante WhatsApp Fluttuante -->
+    <!-- Sostituisci 393331234567 con il numero di tua suocera (39 è il prefisso per l'Italia) -->
+    <a href="https://wa.me/393331234567?text=Ciao!%20Vorrei%20informazioni%20su%20un%20capo%20di%20abbigliamento." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-text">Scrivici su WhatsApp</span>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 New Generation. Tutti i diritti riservati.</p>
+        <p>Seguici sui nostri social! | Contattaci per ordini personalizzati.</p>
+    </footer>
+
+    <!-- Script per far funzionare il carrello di base -->
+    <script>
+        let articoliInCarrello = 0;
+
+        function aggiungiAlCarrello() {
+            articoliInCarrello++;
+            document.getElementById('cart-counter').innerText = articoliInCarrello;
+            
+            // Crea un piccolo effetto visivo
+            const cartIcon = document.querySelector('.cart-icon');
+            cartIcon.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                cartIcon.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        function apriCarrello() {
+            if (articoliInCarrello === 0) {
+                alert("Il tuo carrello è vuoto!");
+            } else {
+                alert("Hai " + articoliInCarrello + " articoli nel carrello. Da qui si aprirà la pagina per il pagamento (Checkout)!");
+                // Qui andrebbe inserito il collegamento alla pagina di checkout
+            }
+        }
+    </script>
+</body>
+</html>
