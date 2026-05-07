@@ -17,6 +17,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: var(--bg); color: var(--dark); overflow-x: hidden; }
 
+        /* Navbar con tre linee */
         header {
             background: white;
             padding: 1rem 5%;
@@ -28,49 +29,64 @@
             top: 0; z-index: 1000;
         }
         .logo { font-size: 1.3rem; font-weight: 800; color: var(--primary); cursor: pointer; }
+        .menu-icon { font-size: 1.5rem; cursor: pointer; color: var(--dark); }
 
-        #home-page { display: block; animation: fadeIn 0.5s; }
-        
+        /* Overlay Menu (quello che si apre con le tre linee) */
+        .nav-overlay {
+            position: fixed;
+            top: 0; right: -100%;
+            width: 100%; height: 100%;
+            background: white;
+            z-index: 4000;
+            transition: 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+        }
+        .nav-overlay.active { right: 0; }
+        .close-nav { position: absolute; top: 20px; right: 25px; font-size: 2rem; cursor: pointer; }
+        .nav-overlay a { text-decoration: none; color: var(--dark); font-size: 1.5rem; font-weight: 600; }
+
+        /* Home Page */
+        #main-content { display: block; animation: fadeIn 0.5s; }
         .hero-mini { padding: 40px 20px; text-align: center; background: #fff5f5; }
-
         .categories-list { display: flex; flex-direction: column; gap: 15px; padding: 20px 5%; }
 
         .cat-item {
-            position: relative; height: 150px; border-radius: 20px;
+            position: relative; height: 140px; border-radius: 20px;
             display: flex; align-items: center; padding-left: 30px;
-            color: white; text-decoration: none; font-size: 1.8rem; font-weight: 800;
+            color: white; text-decoration: none; font-size: 1.6rem; font-weight: 800;
             background-size: cover; background-position: center; overflow: hidden; transition: 0.3s;
         }
         .cat-item::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 1; }
         .cat-item span { z-index: 2; position: relative; }
 
+        /* Sfondi Categorie */
         .bg-primavera { background-image: url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600'); }
         .bg-estate { background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600'); }
         .bg-outlet { background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600'); }
 
+        /* Pagine Sezione */
         .section-page {
             display: none; position: absolute; top: 0; left: 0;
             width: 100%; min-height: 100vh; background: var(--bg);
             z-index: 2000; padding: 20px 5%; animation: slideIn 0.4s ease-out;
         }
-
         .btn-back { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background: #eee; border-radius: 50px; cursor: pointer; font-weight: 600; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-top: 20px; }
-
+        /* Griglia Prodotti */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
         .product-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee; }
         .product-card img { width: 100%; height: 180px; object-fit: cover; }
-        .product-info { padding: 12px; text-align: left; }
-        .product-info h4 { font-size: 0.85rem; margin-bottom: 5px; color: #444; }
-        .product-taglia { font-size: 0.75rem; color: #888; margin-bottom: 5px; }
-        .product-price { color: var(--primary); font-weight: 800; font-size: 1rem; }
+        .product-info { padding: 12px; }
+        .product-price { color: var(--primary); font-weight: 800; }
 
-        .wa-btn {
-            position: fixed; bottom: 20px; right: 20px;
-            background: #25d366; color: white; width: 60px; height: 60px;
-            border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            font-size: 30px; z-index: 3000;
-        }
+        /* WhatsApp & Info */
+        .wa-btn { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; z-index: 3000; }
+        
+        .info-box { background: #f9f9f9; padding: 30px 20px; margin-top: 20px; border-radius: 20px; text-align: center; }
 
         @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -78,15 +94,24 @@
 </head>
 <body>
 
+<div class="nav-overlay" id="navOverlay">
+    <div class="close-nav" onclick="toggleNav()"><i class="fas fa-times"></i></div>
+    <a href="javascript:void(0)" onclick="goHome(); toggleNav()">Home</a>
+    <a href="javascript:void(0)" onclick="openSection('info-page'); toggleNav()">Dove Siamo</a>
+    <a href="javascript:void(0)" onclick="openSection('info-page'); toggleNav()">Orari</a>
+    <a href="https://wa.me/39123456789" target="_blank">Contattaci su WA</a>
+</div>
+
 <div id="main-content">
     <header>
         <div class="logo" onclick="goHome()">NEW GENERATION</div>
+        <div class="menu-icon" onclick="toggleNav()"><i class="fas fa-bars"></i></div>
     </header>
 
     <div id="home-page">
         <div class="hero-mini">
             <h2>Boutique 0-16 Anni</h2>
-            <p>Scegli la collezione e contattaci su WhatsApp</p>
+            <p>Seleziona una collezione</p>
         </div>
 
         <div class="categories-list">
@@ -97,70 +122,34 @@
     </div>
 </div>
 
+<div id="info-page" class="section-page">
+    <div class="btn-back" onclick="goHome()"><i class="fas fa-arrow-left"></i> Indietro</div>
+    <h1>Informazioni</h1>
+    <div class="info-box">
+        <i class="fas fa-map-marker-alt" style="color:var(--primary); font-size: 1.5rem;"></i>
+        <h3 style="margin: 10px 0;">Dove Siamo</h3>
+        <p>Via Garibaldi 50, Adrano (CT)</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=Via+Garibaldi+50+Adrano" target="_blank" style="color:var(--primary); font-weight:bold; display:block; margin-top:10px;">Apri Navigatore</a>
+    </div>
+    <div class="info-box">
+        <i class="fas fa-clock" style="color:var(--primary); font-size: 1.5rem;"></i>
+        <h3 style="margin: 10px 0;">Orari</h3>
+        <p><strong>Lunedì:</strong> Chiuso / 16:00 - 20:00</p>
+        <p><strong>Mar-Sab:</strong> 09:00-13:00 / 16:00-20:00</p>
+        <p><strong>Domenica:</strong> Chiuso</p>
+    </div>
+</div>
+
 <div id="primavera-page" class="section-page">
     <div class="btn-back" onclick="goHome()"><i class="fas fa-arrow-left"></i> Indietro</div>
     <h1>Collezione Primavera</h1>
     <div class="grid">
         <div class="product-card">
-            <img src="https://via.placeholder.com/300?text=Completo+Sportivo+Verde">
+            <img src="https://via.placeholder.com/300?text=Completo+Sportivo">
             <div class="product-info">
-                <h4>Tuta New Generation Sport (Verde/Arancio)</h4>
-                <p class="product-taglia">Taglie: 2 - 10 anni</p>
+                <h4>Tuta Sportiva Verde</h4>
+                <p style="font-size: 0.8rem; color:#888;">Taglie: 2 - 10 anni</p>
                 <p class="product-price">€ 34.90</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="https://via.placeholder.com/300?text=Felpa+Fucsia">
-            <div class="product-info">
-                <h4>Completo Felpa & Pantalone Fucsia</h4>
-                <p class="product-taglia">Taglie: 4 - 12 anni</p>
-                <p class="product-price">€ 39.00</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="https://via.placeholder.com/300?text=Giacca+K-Way">
-            <div class="product-info">
-                <h4>Giacca antivento K-Way Style</h4>
-                <p class="product-taglia">Taglie: 6 - 16 anni</p>
-                <p class="product-price">€ 45.00</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="estate-page" class="section-page">
-    <div class="btn-back" onclick="goHome()"><i class="fas fa-arrow-left"></i> Indietro</div>
-    <h1>Collezione Estate</h1>
-    <div class="grid">
-        <div class="product-card">
-            <img src="https://via.placeholder.com/300?text=Completo+Trussardi">
-            <div class="product-info">
-                <h4>Set T-shirt & Bermuda Trussardi</h4>
-                <p class="product-taglia">Taglie: 3 - 14 anni</p>
-                <p class="product-price">€ 49.00</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="outlet-page" class="section-page">
-    <div class="btn-back" onclick="goHome()"><i class="fas fa-arrow-left"></i> Indietro</div>
-    <h1>Outlet & Accessori</h1>
-    <div class="grid">
-        <div class="product-card">
-            <img src="https://via.placeholder.com/300?text=Scarpe+Mocassino">
-            <div class="product-info">
-                <h4>Mocassino Platform Nero</h4>
-                <p class="product-taglia">Numeri: 30 - 38</p>
-                <p class="product-price">€ 25.00 <strike style="color:#ccc; font-size:0.8rem;">€ 45</strike></p>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="https://via.placeholder.com/300?text=Stivaletti+Beige">
-            <div class="product-info">
-                <h4>Stivaletto con Fiocco Beige</h4>
-                <p class="product-taglia">Numeri: 22 - 30</p>
-                <p class="product-price">€ 29.00</p>
             </div>
         </div>
     </div>
@@ -169,8 +158,12 @@
 <a href="https://wa.me/39123456789" class="wa-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <script>
+    function toggleNav() {
+        document.getElementById('navOverlay').classList.toggle('active');
+    }
     function openSection(pageId) {
         document.getElementById('main-content').style.display = 'none';
+        document.querySelectorAll('.section-page').forEach(p => p.style.display = 'none');
         document.getElementById(pageId).style.display = 'block';
         window.scrollTo(0,0);
     }
