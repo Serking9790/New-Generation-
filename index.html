@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Generation | Corredino & Abbigliamento 0-16</title>
+    <title>New Generation | Boutique Adrano</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Rubik+Bubble&display=swap" rel="stylesheet">
     <style>
@@ -27,27 +27,24 @@
         .nav-overlay.active { right: 0; }
         .close-nav { align-self: flex-end; font-size: 2rem; cursor: pointer; margin-bottom: 20px; }
         .nav-overlay a { text-decoration: none; color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 15px; display: flex; align-items: center; gap: 12px; }
-        .nav-overlay .social-links { margin-top: auto; display: flex; gap: 20px; padding-top: 20px; border-top: 1px solid #eee; }
 
         #main-content { display: block; animation: fadeIn 0.5s; }
-        .hero-banner { background: #fff5f5; padding: 25px 5%; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 20px 5%; }
-        .product-card { background: white; border-radius: 15px; overflow: hidden; border: 1px solid #f1f1f1; }
-        .product-card img { width: 100%; height: 160px; object-fit: cover; background: #f9f9f9; }
-        .product-info { padding: 10px; text-align: center; }
-        .product-price { color: var(--color-1); font-weight: 800; }
+        .hero-banner { background: #fff5f5; padding: 25px 5%; text-align: center; margin-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 10px 5% 40px; }
+        .product-card { background: white; border-radius: 15px; overflow: hidden; border: 1px solid #f1f1f1; display: flex; flex-direction: column; }
+        .product-card img { width: 100%; height: 170px; object-fit: cover; background: #fdfdfd; }
+        .product-info { padding: 12px; text-align: center; flex-grow: 1; }
+        .product-info h4 { font-size: 0.8rem; margin-bottom: 5px; color: #444; }
+        .product-price { color: var(--color-1); font-weight: 800; font-size: 1rem; }
 
-        .section-page { display: none; position: absolute; top: 0; left: 0; width: 100%; min-height: 100vh; background: white; z-index: 2000; padding: 20px 5%; animation: slideIn 0.3s ease-out; }
-        .btn-back { display: inline-block; margin-bottom: 20px; padding: 8px 15px; background: #f0f0f0; border-radius: 50px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
+        .section-page { display: none; position: absolute; top: 0; left: 0; width: 100%; min-height: 100vh; background: white; z-index: 2000; padding: 20px 5%; }
+        .btn-back { display: inline-block; margin-bottom: 20px; padding: 8px 18px; background: #f0f0f0; border-radius: 50px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
         
         .social-box { margin-top: 20px; display: flex; justify-content: center; gap: 15px; }
-        .social-box a { font-size: 1.8rem; }
-        .fa-facebook { color: #1877F2; }
-        .fa-instagram { color: #E4405F; }
+        .fa-facebook { color: #1877F2; font-size: 1.8rem; }
+        .fa-instagram { color: #E4405F; font-size: 1.8rem; }
 
-        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
         .wa-btn { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 28px; z-index: 3000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
     </style>
 </head>
@@ -62,7 +59,7 @@
     <a href="javascript:void(0)" onclick="openSection('inverno'); toggleNav()"><i class="fas fa-snowflake" style="color: var(--color-1);"></i> Inverno</a>
     <a href="javascript:void(0)" onclick="openSection('outlet'); toggleNav()" style="color: var(--color-5);"><i class="fas fa-tag"></i> Outlet %</a>
     <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
-    <a href="javascript:void(0)" onclick="openSection('info-page'); toggleNav()"><i class="fas fa-info-circle"></i> Dove Siamo & Info</a>
+    <a href="javascript:void(0)" onclick="openSection('info-page'); toggleNav()"><i class="fas fa-info-circle"></i> Info & Social</a>
 </div>
 
 <div id="main-content">
@@ -78,39 +75,98 @@
     </header>
 
     <div id="home-page">
-        <div class="hero-banner"><h2>Boutique Adrano 🎈</h2><p>Vieni a scoprire la nuova collezione</p></div>
+        <div class="hero-banner"><h2>Boutique Adrano 🎈</h2><p>Scopri i nuovi arrivi 0-16 anni</p></div>
+        
+        <h2 style="padding: 10px 5% 0; font-size: 1.2rem;">Vetrina Novità ✨</h2>
         <div class="grid">
-            <div class="product-card"><img src="https://via.placeholder.com/300?text=Tuta+Sportiva"><div class="product-info"><h4>Tuta Sportiva</h4><p class="product-price">€ 34.90</p></div></div>
-            <div class="product-card"><img src="https://via.placeholder.com/300?text=Mocassino"><div class="product-info"><h4>Mocassino Nero</h4><p class="product-price">€ 25.00</p></div></div>
-            <div class="product-card"><img src="https://via.placeholder.com/300?text=Felpa+Rosa"><div class="product-info"><h4>Felpa Fashion</h4><p class="product-price">€ 29.00</p></div></div>
-            <div class="product-card"><img src="https://via.placeholder.com/300?text=Giacca"><div class="product-info"><h4>Giacca Leggera</h4><p class="product-price">€ 45.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Tuta+Verde"><div class="product-info"><h4>Tuta Sport Verde</h4><p class="product-price">€ 34.90</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Mocassino+Nero"><div class="product-info"><h4>Mocassino Classico</h4><p class="product-price">€ 25.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Felpa+Rosa"><div class="product-info"><h4>Felpa Fashion Bimba</h4><p class="product-price">€ 29.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Giacca+Blu"><div class="product-info"><h4>Giacca Leggera K-Way</h4><p class="product-price">€ 45.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Abito+Fiori"><div class="product-info"><h4>Abito Primavera</h4><p class="product-price">€ 38.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Jeans+Bimbo"><div class="product-info"><h4>Jeans Regular Fit</h4><p class="product-price">€ 22.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Sneakers"><div class="product-info"><h4>Sneakers Trendy</h4><p class="product-price">€ 32.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Completo+Neonato"><div class="product-info"><h4>Set Corredino 3pz</h4><p class="product-price">€ 45.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=T-shirt+Logo"><div class="product-info"><h4>T-shirt Cotone</h4><p class="product-price">€ 15.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Gonna+Tulle"><div class="product-info"><h4>Gonna Tulle Rosa</h4><p class="product-price">€ 28.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Cardigan"><div class="product-info"><h4>Cardigan Lana Light</h4><p class="product-price">€ 35.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Stivaletti"><div class="product-info"><h4>Stivaletti Pioggia</h4><p class="product-price">€ 24.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Polo+Sport"><div class="product-info"><h4>Polo piquet</h4><p class="product-price">€ 19.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Leggings"><div class="product-info"><h4>Leggings Fantasia</h4><p class="product-price">€ 12.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Gubbino+Jeans"><div class="product-info"><h4>Gubbino Denim</h4><p class="product-price">€ 39.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Bermuda"><div class="product-info"><h4>Bermuda Cargo</h4><p class="product-price">€ 20.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Cappellino"><div class="product-info"><h4>Set Cappello e Sciarpa</h4><p class="product-price">€ 18.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Pigiama"><div class="product-info"><h4>Pigiama Disney</h4><p class="product-price">€ 25.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Zainetto"><div class="product-info"><h4>Zainetto Asilo</h4><p class="product-price">€ 22.00</p></div></div>
+            <div class="product-card"><img src="https://via.placeholder.com/300?text=Ballerine"><div class="product-info"><h4>Ballerine Vernice</h4><p class="product-price">€ 29.00</p></div></div>
         </div>
     </div>
 </div>
 
+<div id="new-collection" class="section-page">
+    <div class="btn-back" onclick="goHome()">← Home</div>
+    <h1>✨ New Collection</h1>
+    <div class="grid">
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Novità+1"><div class="product-info"><h4>Abito Gala</h4><p class="product-price">€ 55.00</p></div></div>
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Novità+2"><div class="product-info"><h4>Tuta Tech</h4><p class="product-price">€ 49.00</p></div></div>
+    </div>
+</div>
+
+<div id="primavera" class="section-page">
+    <div class="btn-back" onclick="goHome()">← Home</div>
+    <h1>🌱 Primavera</h1>
+    <div class="grid">
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Giacca+Vento"><div class="product-info"><h4>Windbreaker</h4><p class="product-price">€ 45.00</p></div></div>
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Sneakers+Light"><div class="product-info"><h4>Scarpa Canvas</h4><p class="product-price">€ 28.00</p></div></div>
+    </div>
+</div>
+
+<div id="estate" class="section-page">
+    <div class="btn-back" onclick="goHome()">← Home</div>
+    <h1>☀️ Estate</h1>
+    <div class="grid">
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Costume"><div class="product-info"><h4>Costume Mare</h4><p class="product-price">€ 15.00</p></div></div>
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Sandalo"><div class="product-info"><h4>Sandalo Mare</h4><p class="product-price">€ 18.00</p></div></div>
+    </div>
+</div>
+
+<div id="autunno" class="section-page">
+    <div class="btn-back" onclick="goHome()">← Home</div>
+    <h1>🍂 Autunno</h1>
+    <div class="grid">
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Stivaletto"><div class="product-info"><h4>Stivaletto Chelsea</h4><p class="product-price">€ 35.00</p></div></div>
+    </div>
+</div>
+
+<div id="inverno" class="section-page">
+    <div class="btn-back" onclick="goHome()">← Home</div>
+    <h1>❄️ Inverno</h1>
+    <div class="grid">
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Piumino"><div class="product-info"><h4>Piumino 100gr</h4><p class="product-price">€ 59.00</p></div></div>
+    </div>
+</div>
+
+<div id="outlet" class="section-page">
+    <div class="btn-back" onclick="goHome()">← Home</div>
+    <h1 style="color: var(--color-5);">🏷️ Outlet %</h1>
+    <div class="grid">
+        <div class="product-card"><img src="https://via.placeholder.com/300?text=Sconto+1"><div class="product-info"><h4>Ultimo Pezzo</h4><p class="product-price">€ 10.00</p></div></div>
+    </div>
+</div>
+
 <div id="info-page" class="section-page">
-    <div class="btn-back" onclick="goHome()"><i class="fas fa-arrow-left"></i> Home</div>
-    <h1>Dove Siamo</h1>
-    <div style="background:#f9f9f9; padding:25px; border-radius:20px; text-align:center;">
-        <p><strong>📍 NEW GENERATION</strong><br>Via Garibaldi, 50<br>95031 Adrano (CT)</p>
-        <a href="https://www.google.com/maps/search/?api=1&query=NEW+GENERATION+Via+Garibaldi+50+Adrano" target="_blank" style="display:inline-block; margin-top:15px; padding:12px 25px; background:var(--color-1); color:white; border-radius:50px; text-decoration:none; font-weight:bold;"><i class="fas fa-map-marker-alt"></i> Apri Mappa / Navigatore</a>
-        
-        <p style="margin-top:25px;"><strong>⏰ Orari di Apertura:</strong><br>Lun: 16:00 – 20:30<br>Mar-Sab: 09:30 – 13:00 / 16:00 – 20:30<br>Dom: Chiuso</p>
-        <p style="margin-top:15px;"><strong>📞 Tel:</strong> +39 328 921 0172</p>
-        
+    <div class="btn-back" onclick="goHome()">← Home</div>
+    <h1>Contatti</h1>
+    <div style="background:#f9f9f9; padding:20px; border-radius:20px; text-align:center;">
+        <p><strong>📍 NEW GENERATION</strong><br>Via Garibaldi, 50, Adrano (CT)</p>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=New+Generation+Adrano+Via+Garibaldi+50" target="_blank" style="display:inline-block; margin-top:15px; padding:10px 20px; background:var(--color-1); color:white; border-radius:50px; text-decoration:none;">Apri Navigatore 🚗</a>
+        <p style="margin-top:20px;"><strong>⏰ Orari:</strong><br>Lun: 16:00 – 20:30<br>Mar-Sab: 09:30-13 / 16-20:30</p>
         <div class="social-box">
             <a href="https://www.facebook.com/share/1N2QyGktEr/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="https://www.instagram.com/newgenerationadrano?igsh=MXd1cm5zNjJpcW84aA==" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
 </div>
-
-<div id="new-collection" class="section-page"><div class="btn-back" onclick="goHome()">Indietro</div><h1>✨ New Collection</h1><div class="grid"></div></div>
-<div id="primavera" class="section-page"><div class="btn-back" onclick="goHome()">Indietro</div><h1>🌱 Primavera</h1><div class="grid"></div></div>
-<div id="estate" class="section-page"><div class="btn-back" onclick="goHome()">Indietro</div><h1>☀️ Estate</h1><div class="grid"></div></div>
-<div id="autunno" class="section-page"><div class="btn-back" onclick="goHome()">Indietro</div><h1>🍂 Autunno</h1><div class="grid"></div></div>
-<div id="inverno" class="section-page"><div class="btn-back" onclick="goHome()">Indietro</div><h1>❄️ Inverno</h1><div class="grid"></div></div>
-<div id="outlet" class="section-page"><div class="btn-back" onclick="goHome()">Indietro</div><h1>🏷️ Outlet %</h1><div class="grid"></div></div>
 
 <a href="https://wa.me/393289210172" class="wa-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
